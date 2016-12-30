@@ -6,7 +6,7 @@ from services.user_service import UserService
 
 api = Blueprint('sample', __name__, url_prefix="/sample")
 
-@api.route('/')	
+@api.route('/')
 def index():
 	"""
 	ユーザ一覧表示
