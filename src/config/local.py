@@ -10,6 +10,7 @@ class Config:
     
     # データベース設定
     DB_HOST = "localhost"
+    DB_PORT = "3306"
     DB_USER = "user"
     DB_PASS = "password"
     DATABASE_NAME = "weekly_report"

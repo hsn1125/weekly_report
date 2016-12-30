@@ -9,17 +9,18 @@ Base = declarative_base()
 
 class DB:
     session = None
-
+    
     @classmethod
     def init_db(cls, app: Flask):
         """
         データベース設定
         :param app: Flask
         """
-        DATABASE = 'mysql+pymysql://{user}:{password}@{hostname}/{database}'.format(
+        DATABASE = 'mysql+pymysql://{user}:{password}@{hostname}:{port}/{database}'.format(
             user=app.config["DB_USER"],
             password=app.config["DB_PASS"],
             hostname=app.config["DB_HOST"],
+            port=app.config["DB_PORT"],
             database=app.config["DATABASE_NAME"])
         
         engine = create_engine(DATABASE, encoding='utf-8')
