@@ -18,5 +18,3 @@ class UserService:
         for user in users:
             user_list[user.id] = user.name
         return user_list
-		
-		

@@ -13,4 +13,3 @@ class Config:
     DB_USER = "user"
     DB_PASS = "password"
     DATABASE_NAME = "weekly_report"
-    

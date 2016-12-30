@@ -25,4 +25,3 @@ modules.append(sample.api)
 
 for module in modules:
     application.register_blueprint(module)
-

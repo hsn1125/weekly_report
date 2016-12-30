@@ -12,4 +12,3 @@ class User(Base):
 	
 	def __repr__(self):
 		return "<User(id=%s, name='%s')>" % (self.id, self.name)
-	
