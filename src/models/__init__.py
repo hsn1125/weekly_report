@@ -10,7 +10,7 @@ Base = declarative_base()
 class DB:
     session = None
     
-    @classmethod
+    @classmethod 
     def init_db(cls, app: Flask):
         """
         データベース設定
