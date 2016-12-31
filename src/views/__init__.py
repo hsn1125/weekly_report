@@ -13,6 +13,9 @@ application.config.from_object(get_config(os.environ.get("WR_ENV")))
 # テンプレートフォルダを変更
 application.template_folder = '../templates'
 
+# 静的ファイルの格納フォルダを変更
+application.static_folder = "../static"
+
 # DB設定
 from models import DB
 DB.init_db(application)
