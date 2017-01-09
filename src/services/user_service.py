@@ -11,7 +11,7 @@ class UserService:
         全ユーザリストを取得
         :return: {id: name}
         """
-        users = db.session().query(User).all()
+        users = User.query.all()
         user_list = dict()
         for user in users:
             user_list[user.id] = user.name
