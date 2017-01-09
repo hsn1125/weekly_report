@@ -1,5 +1,5 @@
+from models import db
 from models.user import User
-from models import DB
 
 class UserService:
 	
@@ -11,7 +11,7 @@ class UserService:
         全ユーザリストを取得
         :return: {id: name}
         """
-        users = DB.session().query(User).all()
+        users = db.session().query(User).all()
         user_list = dict()
         for user in users:
             user_list[user.id] = user.name

@@ -12,3 +12,7 @@ class Config:
     DB_USER = "user"
     DB_PASS = "password"
     DATABASE_NAME = "weekly_report"
+    
+    # flask-sqlalchemyの設定
+    SQLALCHEMY_ECHO = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = True

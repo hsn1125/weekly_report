@@ -1,4 +1,5 @@
 import os
+from models import db
 from flask import Flask
 from jinja2 import FileSystemLoader
 
@@ -15,8 +16,13 @@ application.template_folder = '../templates'
 application.static_folder = "../static"
 
 # DB設定
-from models import DB
-DB.init_db(application)
+application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{user}:{password}@{hostname}:{port}/{database}'.format(
+    user=application.config["DB_USER"],
+    password=application.config["DB_PASS"],
+    hostname=application.config["DB_HOST"],
+    port=application.config["DB_PORT"],
+    database=application.config["DATABASE_NAME"])
+db.init_app(application)
 
 # APIの追加
 # ※APIが追加になった場合は修正をお願いします。
@@ -26,3 +32,7 @@ modules.append(sample.api)
 
 for module in modules:
     application.register_blueprint(module)
+
+@application.before_first_request
+def init():
+    db.create_all()
