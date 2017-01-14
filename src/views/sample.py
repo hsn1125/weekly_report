@@ -1,6 +1,4 @@
-from flask import (
-    Blueprint, request, render_template, 
-    abort, current_app, redirect, url_for)
+from flask import (Blueprint, request, render_template, abort, current_app, redirect, url_for)
 from models import db
 from services.user_service import UserService
 
@@ -26,10 +24,10 @@ def user_add():
 
     # ユーザ名の指定がなかった場合はエラー
     if not name:
-    	current_app.logger.warning("not input name")
-    	return abort(400)
+        current_app.logger.warning("not input name")
+        return abort(400)
     try:
-    	# ユーザ情報の追加
+        # ユーザ情報の追加
         UserService().add_user(name)
         db.session().commit()
         return redirect(url_for("sample.index"))
