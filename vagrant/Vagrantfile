@@ -1,0 +1,13 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos72_weekly"
+  config.vm.box_url = "https://github.com/CommanderK5/packer-centos-template/releases/download/0.7.2/vagrant-centos-7.2.box"
+  config.vm.boot_timeout = 600
+  config.vm.network "forwarded_port", guest: 8080, host: 5000
+  # config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.synced_folder "../../weekly_report-master", "/home/vagrant/synced_weekly_report"
+  config.vm.provision "shell", run: "always", inline: "systemctl restart network.service"
+  config.vm.provision "shell", :path => "initialize_root.sh"
+  config.vm.provision "shell", :path => "initialize.sh", :privileged => false
+end
