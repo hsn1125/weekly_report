@@ -28,6 +28,8 @@ yum -y localinstall http://dev.mysql.com/get/mysql57-community-release-el7-9.noa
 yum -y install mysql-community-server
 echo skip-grant-tables >> /etc/my.cnf
 systemctl start mysqld.service
+mysql -uroot -e "use mysql; UPDATE user SET authentication_string=password('password') WHERE user='root';flush privileges;"
+sed -i "s/skip-grant-tables//g" /etc/my.cnf
 
 #### install git
 yum -y install git
